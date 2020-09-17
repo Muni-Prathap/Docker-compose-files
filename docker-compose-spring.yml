@@ -1,0 +1,20 @@
+//networks&volumes created by our own , docker compose will create these
+version: "3"
+services:
+  springapp:
+    image: prathapdockerhub/spring-boot-mongo:1
+    container_name: springapp
+    ports:
+    - 8080:8080
+  mongodb:
+    image: mongo
+    container_name: mongo
+    volumes:
+    - mongobk:/data/db
+volumes:
+  mongobk:
+    external: true
+networks:
+  default:
+    external:
+      name: springappnetwork
