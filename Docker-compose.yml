@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  springapp:
+    image: prathapdockerhub/spring-boot-mongo:1
+    container_name: springapp
+    ports:
+    - 8080:8080
+    networks:
+    - springappnetwork
+  mongodb:
+    image: mongo
+    container_name: mongo
+    networks:
+    - springappnetwork
+    volumes:
+    - mongobk:/data/db
+volumes:
+  mongobk:
+networks:
+  springappnetwork:
